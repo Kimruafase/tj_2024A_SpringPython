@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h3> 쿠우쿠우 점포 현황 </h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>
+                    점포 번호
+                </th>
+                <th>
+                    점포 이름
+                </th>
+                <th>
+                    전화번호
+                </th>
+                <th>
+                    주소
+                </th>
+                <th>
+                    운영 시간
+                </th>
+            </tr>
+        </thead>
+        <tbody class="tbody">
+
+        </tbody>
+    </table>
+
+    <!-- JQuery 가져오기 -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        //  Flask 서버와 통신
+        $.ajax({
+            method: "get",
+            url: "http://127.0.0.1:5000/qooqoo",
+            success: r => {
+                console.log(r);
+                let tbody = document.querySelector(".tbody");
+                let html = ``;
+                r.forEach(o => {
+                    html += `<tr>
+                                <td>
+                                    ${o.num}
+                                </td>
+                                <td>
+                                    ${o.name}
+                                </td>
+                                <td>
+                                    ${o.phone}
+                                </td>
+                                <td>
+                                    ${o.address}
+                                </td>
+                                <td>
+                                    ${o.time}
+                                </td>
+                            </tr>
+                            `;
+                })
+                tbody.innerHTML = html;
+            }
+
+        })
+
+    </script>
+
+</body>
+</html>
