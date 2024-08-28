@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <h3> 쿠우쿠우 전국 매장 정보 </h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>
+                    번호
+                </th>
+                <th>
+                    매장명
+                </th>
+                <th>
+                    연락처
+                </th>
+                <th>
+                    주소
+                </th>
+                <th>
+                    영업 시간
+                </th>
+            </tr>
+        </thead>
+        <tbody class="tbody">
+
+        </tbody>
+    </table>
+
+    <!-- JQuery 가져오기 -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        //  Flask 서버와 통신
+        $.ajax({
+            method: "get",
+            url: "http://192.168.30.239:5000/qooqoo",
+            success: r => {
+                console.log(r);
+                let tbody = document.querySelector(".tbody");
+                let html = ``;
+                r.forEach(o => {
+                    html += `<tr>
+                                <td>
+                                    ${o.번호}
+                                </td>
+                                <td>
+                                    ${o.지점명}
+                                </td>
+                                <td>
+                                    ${o.연락처}
+                                </td>
+                                <td>
+                                    ${o.주소}
+                                </td>
+                                <td>
+                                    ${o.영업시간}
+                                </td>
+                            </tr>
+                            `;
+                })
+                tbody.innerHTML = html;
+            }
+
+        })
+    </script>
+</body>
+
+</html>
