@@ -10,8 +10,48 @@
 <table border="1">
     <thead>
     <tr>
-        <th> 총공고 </th> <th> 신입 </th> <th>신입,경력</th> <th>신입,경력1년</th>
-        <th>경력1년</th> <th>경력2년</th> <th>경력3년</th><th>경력4년</th> <th>경력5년</th> <th>경력6년</th><th>경력7년</th> <th>경력8년</th> <th>경력9년</th> <th>경력10년</th>
+        <th> 
+            총공고 
+        </th>
+        <th> 
+            신입 
+        </th>
+        <th>
+            신입,경력
+        </th> 
+        <th>
+            신입,경력1년
+        </th>
+        <th>
+            경력1년
+        </th> 
+        <th>
+            경력2년
+        </th> 
+        <th>
+            경력3년
+        </th>
+        <th>
+            경력4년
+        </th> 
+        <th>
+            경력5년
+        </th> 
+        <th>
+            경력6년
+        </th>
+        <th>
+            경력7년
+        </th> 
+        <th>
+            경력8년
+        </th> 
+        <th>
+            경력9년
+        </th> 
+        <th>
+            경력10년
+        </th>
     </tr>
     </thead>
     <tbody class="count">
@@ -20,8 +60,27 @@
 <table border="1">
     <thead>
     <tr>
-        <th> 회사명 </th> <th> 공고명 </th> <th>경력</th> <th>학력</th>
-        <th>계약유형</th> <th>지역</th> <th>채용기간</th>
+        <th> 
+            회사명 
+        </th> 
+        <th> 
+            공고명 
+        </th> 
+        <th>
+            경력
+        </th> 
+        <th>
+            학력
+        </th>
+        <th>
+            계약유형
+        </th> 
+        <th>
+            지역
+        </th> 
+        <th>
+            채용기간
+        </th>
     </tr>
     </thead>
     <tbody class="info">
@@ -39,9 +98,49 @@
            let html = ``;
            r.forEach( o => {
                html += `<tr>
-       <th> ${o.총공고} </th> <th> ${o.신입} </th> <th>${o.신입_경력}</th> <th>${o.신입_경력1년}</th>
-       <th>${o.경력1년}</th> <th>${o.경력2년}</th> <th>${o.경력3년}</th> <th>${o.경력4년}</th> <th>${o.경력5년}</th> <th>${o.경력6년}</th> <th>${o.경력7년}</th> <th>${o.경력8년}</th> <th>${o.경력9년}</th> <th>${o.경력10년}</th>
-   </tr>`
+                            <th>
+                                 ${o.총공고} 
+                            </th> 
+                            <th> 
+                                ${o.신입} 
+                            </th> 
+                            <th>
+                                ${o.신입_경력}
+                            </th> 
+                            <th>
+                                ${o.신입_경력1년}
+                            </th>
+                            <th>
+                                ${o.경력1년}
+                            </th> 
+                            <th>
+                                ${o.경력2년}
+                            </th> 
+                            <th>
+                                ${o.경력3년}
+                            </th> 
+                            <th>
+                                ${o.경력4년}
+                            </th> 
+                            <th>
+                                ${o.경력5년}
+                            </th> 
+                            <th>
+                                ${o.경력6년}
+                            </th> 
+                            <th>
+                                ${o.경력7년}
+                            </th> 
+                            <th>
+                                ${o.경력8년}
+                            </th> 
+                            <th>
+                                ${o.경력9년}
+                            </th> 
+                            <th>
+                                ${o.경력10년}
+                            </th>
+                        </tr>`
            })
            tbody.innerHTML = html
        }
@@ -54,8 +153,29 @@
            let tbody = document.querySelector('.info')
            let html = ``;
            r.forEach( o => {
-               html += `<tr><th> ${ o.회사명 } </th> <th> ${ o.공고명 } </th> <th>${ o.경력 } </th> <th>${ o.학력 }</th>
-                        <th> ${ o.계약유형 } </th> <th> ${ o.지역 } </th> <th> ${ o.채용기간 } </th></tr>`
+               html += `<tr>
+                            <th> 
+                                ${ o.회사명 } 
+                            </th> 
+                            <th> 
+                                ${ o.공고명 } 
+                            </th> 
+                            <th>
+                                ${ o.경력 } 
+                            </th> 
+                            <th>
+                                ${ o.학력 }
+                            </th>
+                            <th> 
+                                ${ o.계약유형 } 
+                            </th> 
+                            <th> 
+                                ${ o.지역 } 
+                            </th> 
+                            <th> 
+                                ${ o.채용기간 } 
+                            </th>
+                        </tr>`
            })
            tbody.innerHTML = html
        }
