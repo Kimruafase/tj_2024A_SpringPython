@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <h3> 전월세 기준 전용 면적의 기술 통계 결과 </h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    전세
+                </th>
+                <th>
+                    월세
+                </th>
+            </tr>
+        </thead>
+        <tbody class="tbody2">
+
+        </tbody>
+    </table>
+    <thead>
+        <tr>
+            <th>
+                일자
+            </th>
+            <th>
+                종가
+            </th>
+            <th>
+                대비
+            </th>
+            <th>
+                등락률
+            </th>
+            <th>
+                시가
+            </th>
+            <th>
+                고가
+            </th>
+            <th>
+                저가
+            </th>
+            <th>
+                거래량
+            </th>
+            <th>
+                거래대금
+            </th>
+            <th>
+                시가총액
+            </th>
+            <th>
+                상장주식수
+            </th>
+        </tr>
+    </thead>
+    <tbody class="tbody1">
+
+    </tbody>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        //  Flask 서버와 통신
+        $.ajax({
+            async: false,
+            method: "get",
+            url: "http://192.168.30.239:5000/apart2",
+            success: r => {
+                console.log(r);
+                console.log(typeof (r))
+                let tbody = document.querySelector(".tbody2");
+                let html = ``;
+                html += `
+                            <tr>
+                                <th>
+                                    거래 수
+                                </th>
+                                <th>
+                                    ${r[0].count.전세}
+                                </th>
+                                <th>
+                                    ${r[0].count.월세}
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    최대
+                                </th>
+                                <th>
+                                    ${r[0].max.전세}
+                                </th>
+                                <th>
+                                    ${r[0].max.월세}
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    최소
+                                </th>
+                                <th>
+                                    ${r[0].min.전세}
+                                </th>
+                                <th>
+                                    ${r[0].min.월세}
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    평균
+                                </th>
+                                <th>
+                                    ${r[0].mean.전세}
+                                </th>
+                                <th>
+                                    ${r[0].mean.월세}
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    표준편차
+                                </th>
+                                <th>
+                                    ${r[0].std.전세}
+                                </th>
+                                <th>
+                                    ${r[0].std.월세}
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    25%
+                                </th>
+                                <th>
+                                    ${r[0]["25%"].전세}
+                                </th>
+                                <th>
+                                    ${r[0]["25%"].월세}
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    50%
+                                </th>
+                                <th>
+                                    ${r[0]["50%"].전세}
+                                </th>
+                                <th>
+                                    ${r[0]["50%"].월세}
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    75%
+                                </th>
+                                <th>
+                                    ${r[0]["75%"].전세}
+                                </th>
+                                <th>
+                                    ${r[0]["75%"].월세}
+                                </th>
+                            </tr>
+                            `;
+                tbody.innerHTML = html;
+            }
+        })
+        $.ajax({
+            async: false,
+            method: "get",
+            url: "http://192.168.30.239:5000/apart1",
+            success: r => {
+                console.log(r);
+                console.log(typeof (r))
+                let tbody = document.querySelector(".tbody1");
+
+            }
+        })
+
+    </script>
+
+
+</body>
+
+</html>
