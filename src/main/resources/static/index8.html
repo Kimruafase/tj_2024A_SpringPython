@@ -64,24 +64,35 @@
             success: r => {
                 console.log(r);
                 let thead = document.querySelector('.hot1')
+                // <thead> 태그 안에 내용물 작성하기, 첫 칸은 대각선 부분이라 아무 내용도 넣지 않음
                 let html = `<tr> <th> </th>`;
+                // 객체 r 에 대해서 key 값들만 빼와서 리스트에 저장 
                 let responseKeys = Object.keys(r)
+                // key 값들에 대한 리스트를 forEach를 통해 반복문을 돌림
                 responseKeys.forEach(keys => {
+                    // 반복문을 통해 리스트 안의 값들을 꺼내와서 <th> 태그의 값들로 지정
                     html += `<th> ${keys} </th> `;
                 })
+                // 마지막에 <tr> 태그 닫음으로 <thead> 부분 채움
                 html += `</tr>`;
 
                 thead.innerHTML = html
                 html1 = ``;
                 let tbody = document.querySelector(".most");
+                // responseKeys의 1번째 인덱스에 대한 키 값에 해당하는 객체 r에 대한 key 값들만 빼와서 리스트 keys 에 저장 
                 let keys = Object.keys(r[responseKeys[0]])
+                // 리스트에 대해 forEach를 통해 반복문을 돌림
                 keys.forEach(key => {
+                    // 제목 아래에 내용 <tbody> 을 채우기 위해 먼저 항목에 해당하는 key 값을 채워넣음
                     html1 += `<tr> <td> ${key} </td>`;
-
+                    // key 값들에 대한 리스트를 forEach를 통해 반복문을 돌림
                     responseKeys.forEach(v => {
+                        // 전체 리스트에 대한 key 값에 해당하는 value를 변수 value에 저장
                         let value = r[v]
+                        // 항목에 해당하는 key 값에 해당하는 value 값을 빼와서 <td> 태그 안에 채워넣음
                         html1 += `<td> ${value[key]} </td>`;
                     })
+                    // <tr> 태그 닫음으로 내용 1줄 종료 후 keys 가 종료될 때까지 반복문 진행
                     html1 += `</tr>`;
                 })
                 tbody.innerHTML = html1
@@ -126,8 +137,11 @@
                 console.log(r);
                 let tbody = document.querySelector('.dupl')
                 let html = ``;
+                // 객체 r에 대해서 key 값만 빼온 정보들을 responseKeys 리스트에 저장
                 let responseKeys = Object.keys(r)
+                // 리스트에 대해서 forEach로 반복문 진행
                 responseKeys.forEach(key => {
+                    // 리스트에 대해서 안에 있는 key 값 하나씩 빼와서 html 안에 넣고 객체 r 안에 key에 해당하는 value 값도 넣음
                     html += `${key}°C : ${r[`${key}`]}번   `
                     console.log(key) // 통계에 사용되는 거래정보 필드명
                     console.log(r[`${key}`]) // 통계 필드의 값
@@ -143,7 +157,9 @@
                 console.log(r);
                 let tbody = document.querySelector('.count')
                 let html = ``;
+                //  리스트 r 에 대해서 반복문을 돌림
                 r.forEach(o => {
+                    //  리스트 r 안에 있는 반복변수 o 를 tr 태그 안에 넣음
                     html += `<tr>
                             ${o}
                          </tr>`
@@ -158,21 +174,32 @@
             success: r => {
                 console.log(r);
                 let thead = document.querySelector(".hot5")
+                // 객체 r 에 대해서 r의 첫번째 인덱스에 해당하는 key 값들을 빼와서 변수에 저장
                 let key = Object.keys(r[0])
+                //  html <thead> 에 해당하는 내용을 채우기 위해 <tr> 태그로 시작
                 let html = `<tr>`;
+                // 변수 key 를 forEach를 통해 반복문을 돌림 
                 key.forEach(k => {
+                    // 변수 key 안에 있는 반복변수 k에 대해서 <th> 태그 안에 채워넣음
                     html += `<th> ${k} </th>`;
                 })
+                // <tr> 태그 닫음으로써 <thead> 태그 종료
                 html += `</tr>`;
                 thead.innerHTML = html;
 
                 let tbody = document.querySelector(".hot6")
                 let html1 = ``;
+                // 객체 r 에 대해서 forEach를 통해 반복문을 돌림 
                 r.forEach(r1 => {
+                    // html <tbody> 에 해당하는 내용을 채우기 위해 <tr> 태그로 시작
                     html1 += `<tr>`;
+                    // 변수 key  를 forEach를 통해 반복문을 돌림
                     key.forEach(k => {
+                        // 객체 r 의 반복문의 반복변수 r1 에 대해서 key의 반복변수 k에 해당하는 value 값만
+                        // html 의 <td> 태그에 넣음
                         html1 += `<td>${r1[k]}</td>`;
                     })
+                    // <tr> 태그 닫음으로서 <tbody> 1줄 종료 객체 r 에 해당하는 반복문이 끝날 때까지 반복함
                     html1 += `</tr>`;
                 })
                 tbody.innerHTML = html1
