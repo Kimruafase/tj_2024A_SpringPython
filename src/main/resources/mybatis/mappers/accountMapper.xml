@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="example.task1.AccountDao">
+    <!-- 1. create -->
+    <insert id="create" parameterType="example.task1.AccountDto">
+        insert into account(accexp, accmoney) values(#{accexp}, #{accmoney});
+    </insert>
+
+    <!-- 2. read -->
+    <select id="read" resultType="example.task1.AccountDto">
+        select * from account
+    </select>
+
+    <!-- 3. update -->
+    <update id="update" parameterType="example.task1.AccountDto">
+        update account set accexp = #{accexp} , accmoney = #{accmoney} , accdate = #{accdate} where accnum = #{accnum}
+    </update>
+
+    <!-- 4. delete -->
+    <delete id="delete" parameterType="example.task1.AccountDto">
+        delete from account where accnum = #{accnum}
+    </delete>
+</mapper>

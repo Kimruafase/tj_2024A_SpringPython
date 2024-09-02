@@ -1,0 +1,72 @@
+> [1] JDBC (JAVA DataBase Connectivity)
+    > 자바에서 DB에 접속할 수 있도록 하는 JAVA API
+    > 대표 인터페이스
+        > 1. Connection
+        > 2. PreparedStatement
+        > 3. ResultSet
+
+> [2] 마이 바티스 (MyBatis)
+    > 자바에서 DB와 상호작용할 수 있도록 매우 유연한 퍼시스턴스 FrameWork 를 제공
+    > 특징
+        > 1. SQL 매핑     : XML 파일, SQL 작성해서 자바 객체와 매핑할 수 있다.
+        > 2. 자동 매핑     : SQL 쿼리의 결과를 자바 객체로 자동으로 매핑할 수 있다.
+        > 3. 유연성        : SQL 직접 작성하고 제어하고 복잡한 쿼리나 기능을 사용 가능하다. vs JPA
+        > 4. 스프링 통합    : Spring FrameWork 에서 지원한다.
+
+    > 1) 의존성 주입(dependency)
+        > implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+
+    > 2) application.properties(Spring FrameWork 가 Spring 실행 시 읽어들이는 파일)
+        > resources / application.properties
+            > 1. JDBC DB URL : 연결할 DB 이름의 URL
+                > spring.datasource.url=jbbc:mysql://localhost:3306/DB이름
+            > 2. JDBC DB URL USERNAME : 연결할 DB의 계정명
+                > spring.datasource.username=root
+            > 3. JDBC DB URL USERPASSWORD : 연결할 DB의 계정 비밀번호 ("=" 앞뒤로 띄워쓰기 주의(띄워쓰기가 pw에 포함됨))
+                > spring.datasource.password=1234
+            > 4. myBatis XML path : 마이바티스 XML 파일의 경로 지정
+                > mybatis.mapper-locations=classpath:mybatis/mappers/*.xml
+                > * resource/(myBatis)폴더명/(mappers)폴더명/*.xml
+
+    > 3) 인터페이스 작성
+        > @Mapper
+          public interface 인터페이스명{
+
+                // 추상메소드명
+                public 반환타입 메소드명();
+          }
+
+    > 4) XML 작성
+        > 1. XML 파일 생성하고 mybatis 연동 코드
+            <?xml version="1.0" encoding="utf-8" ?>
+            <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+        > 2. 인터페이스(DAO) 매핑하는 XML 코드 작성
+            > 1) 인터페이스 연동
+            <mapper namespace="매핑할 인터페이스 경로">
+                <DML> </DML>
+              </mapper>
+
+            > 2) 연동한 인터페이스의 추상메소드 매핑
+            <DML id="매핑할 추상 메소드" parameterType="매개변수", resultType="반환타입"> </DML>
+                > * parameterType, resultType : 일반적으로 1개의 타입만 가능하다, 2개 이상의 타입의 경우 : Map, Dto
+
+            > insert    * 기본 반환타입 : int(레코드 등록 갯수)
+                <insert>
+                    insert문
+                </insert>
+
+            > select
+                <select>
+                    select문
+                </select>
+
+            > update    * 기본 반환타입 : int(레코드 수정 갯수)
+                <update>
+                    update문
+                </update>
+
+            > delete    * 기본 반환타입 : int(레코드 삭제 갯수)
+                <delete>
+                    delete문
+                </delete>
