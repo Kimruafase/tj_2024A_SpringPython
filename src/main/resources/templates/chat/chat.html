@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .msgBox {
+            width: 300px;
+            border: 1px solid black;
+        }
+
+        .fromMsgBox {
+            text-align: right;
+            background-color: yellow;
+        }
+
+        .toMsgBox {
+            text-align: left;
+            background-color: white;
+        }
+
+        .alarmMsgBox {
+            text-align: center;
+            border: 1px solid gray;
+            background-color: gray;
+        }
+    </style>
 </head>
+
 <body>
     <h3>aa</h3>
+    <div>
+        <div class="msgBox">
+
+        </div>
+        <input type="text" class="msgInput">
+        <button type="button" onclick="onMsgSend()"> 메세지 전송</button>
+    </div>
+
 
     <script src="/js/chat/chat.js"></script>
 </body>
+
 </html>

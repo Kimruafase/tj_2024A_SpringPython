@@ -8,7 +8,7 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 import web.controller.ChatController;
 
 @Configuration  //  해당 클래스를 Spring Container 빈 등록
-@EnableWebSocket    // 웹 소켓 빈 등록
+@EnableWebSocket// 웹 소켓 빈 등록
 public class WebSocketConfig implements WebSocketConfigurer {
 
     @Autowired private ChatController chatController;
